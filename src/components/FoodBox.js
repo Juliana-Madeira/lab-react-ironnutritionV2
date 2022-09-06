@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col, Button } from 'antd';
 
 const FoodBox = ({ food }) => {
-  const sum = () => food.calories * food.servings;
+  const totalCalories = () => food.calories * food.servings;
 
   const handleDeleteFood = () => {
     console.log('delete'); //- só para verificar se o botao esta funcionando
@@ -15,7 +15,7 @@ const FoodBox = ({ food }) => {
         <p>Calories: {food.calories}</p>
         <p>Servings: {food.servings}</p>
         <p>
-          <b>Total Calories: {sum()}</b> kcal
+          <b>Total Calories: {totalCalories()}</b> kcal
         </p>
         <Button type="primary" onClick={handleDeleteFood}>
           {' '}

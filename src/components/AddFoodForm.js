@@ -3,7 +3,7 @@ import { Input, Button, Divider } from 'antd';
 
 
 
-const AddFoodForm = (addNewFood) => {
+const AddFoodForm = ({addNewFood}) => {
     const [nameFoodEntry, setNameFoodEntry] = useState('');
     const [imageFoodEntry, setImageFoodEntry] = useState('');
     const [caloriesFoodEntry, setCaloriesFoodEntry] = useState('');
@@ -13,7 +13,12 @@ const AddFoodForm = (addNewFood) => {
     const handleSubmit = (e) => {
       console.log('handlesubmit funcionando')
       e.preventDefault();
-      const newFoodEntry = {nameFoodEntry, imageFoodEntry, caloriesFoodEntry, servingsFoodEntry}
+      const newFoodEntry = {
+        name: nameFoodEntry, 
+        image: imageFoodEntry, 
+        calories: caloriesFoodEntry, 
+        servings: servingsFoodEntry
+      }
       addNewFood(newFoodEntry)
       setNameFoodEntry('');
       setImageFoodEntry('');
@@ -23,7 +28,7 @@ const AddFoodForm = (addNewFood) => {
 
   return (
     <div style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
-        <form onSubmit={handleSubmit} style={{width: 450}}>
+        <form style={{width: 450}}>
         <Divider>Add Food Entry</Divider>
             <Input
             placeholder='Name of Food'
@@ -53,7 +58,7 @@ const AddFoodForm = (addNewFood) => {
             onChange={(e) => setServingsFoodEntry(e.target.value)}
             style={{marginBottom: '1em', border:'1px solid #989898'}}
             />
-            <Button type='submit'>Add Food</Button>
+            <Button type='submit' onClick={handleSubmit}>Add Food</Button>
         </form>
     </div>
   )
