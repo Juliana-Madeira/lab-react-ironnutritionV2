@@ -6,6 +6,7 @@ import AddFoodForm from './components/AddFoodForm';
 
 import './App.css';
 
+
 function App() {
   const [foodsList, setFoodsList] = useState(foods);
   const [newFoods, setNewFoods] = useState('');
