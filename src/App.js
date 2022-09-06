@@ -5,18 +5,24 @@ import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 
 import './App.css';
+import { Divider } from 'antd';
+
+
 
 
 function App() {
   const [foodsList, setFoodsList] = useState(foods);
-  const [newFoods, setNewFoods] = useState('');
-
-  const pushNewFood = (newFoodPushed) => {setNewFoods([...foodsList, newFoodPushed])}
+ 
+  const addNewFood = (newFood) => {
+    const newFoodsList = [newFood, ...foodsList];
+    setFoodsList(newFoodsList);
+  }
 
   return (
     <div className="App">
       <h1>Iron Nutrition</h1>
-      <h2>Food List</h2>
+      <AddFoodForm addNewFood={addNewFood}/>
+      <Divider style={{marginTop: '2.5em'}}>Food List</Divider>
       {foodsList.map((food, index) => {
         return(
         <div key={index}>
@@ -26,7 +32,6 @@ function App() {
         </div>
         );
       })}
-      <AddFoodForm pushNewFood={pushNewFood}/>
       {/* <FoodBox food={{name: 'Orange', calories: 85, image: 'https://i.imgur.com/abKGOcv.jpg', servings: 1}}/> */}
     </div>
   );

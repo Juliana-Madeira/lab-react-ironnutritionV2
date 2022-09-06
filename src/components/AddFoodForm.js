@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button, Divider } from 'antd';
 
 
-const AddFoodForm = ({pushNewFood}) => {
+
+const AddFoodForm = (props) => {
     const [nameFoodEntry, setNameFoodEntry] = useState('');
     const [imageFoodEntry, setImageFoodEntry] = useState('');
     const [caloriesFoodEntry, setCaloriesFoodEntry] = useState('');
@@ -10,19 +11,20 @@ const AddFoodForm = ({pushNewFood}) => {
    
 
     const handleSubmit = (e) => {
-        console.log('submit')
+      console.log('handlesubmit funcionando')
         e.preventDefault();
-        pushNewFood({nameFoodEntry, imageFoodEntry, caloriesFoodEntry, servingsFoodEntry});
+        const newFoodEntry = {nameFoodEntry, imageFoodEntry, caloriesFoodEntry, servingsFoodEntry}
+        props.addNewFood(newFoodEntry)
         setNameFoodEntry('');
         setImageFoodEntry('');
-        setCaloriesFoodEntry('');
-        setServingsFoodEntry('');
+        setCaloriesFoodEntry(0);
+        setServingsFoodEntry(0);
     }
 
   return (
     <div style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
-        <h1>Add Food Entry</h1>
         <form onSubmit={handleSubmit} style={{width: 450}}>
+        <Divider>Add Food Entry</Divider>
             <Input
             placeholder='Name of Food'
             value={nameFoodEntry}
@@ -51,7 +53,7 @@ const AddFoodForm = ({pushNewFood}) => {
             onChange={(e) => setServingsFoodEntry(e.target.value)}
             style={{marginBottom: '1em', border:'1px solid #989898'}}
             />
-            <Button type='primary'>Add Food</Button>
+            <Button type='submit'>Add Food</Button>
         </form>
     </div>
   )
