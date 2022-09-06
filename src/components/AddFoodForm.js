@@ -3,7 +3,7 @@ import { Input, Button, Divider } from 'antd';
 
 
 
-const AddFoodForm = (props) => {
+const AddFoodForm = (addNewFood) => {
     const [nameFoodEntry, setNameFoodEntry] = useState('');
     const [imageFoodEntry, setImageFoodEntry] = useState('');
     const [caloriesFoodEntry, setCaloriesFoodEntry] = useState('');
@@ -12,13 +12,13 @@ const AddFoodForm = (props) => {
 
     const handleSubmit = (e) => {
       console.log('handlesubmit funcionando')
-        e.preventDefault();
-        const newFoodEntry = {nameFoodEntry, imageFoodEntry, caloriesFoodEntry, servingsFoodEntry}
-        props.addNewFood(newFoodEntry)
-        setNameFoodEntry('');
-        setImageFoodEntry('');
-        setCaloriesFoodEntry(0);
-        setServingsFoodEntry(0);
+      e.preventDefault();
+      const newFoodEntry = {nameFoodEntry, imageFoodEntry, caloriesFoodEntry, servingsFoodEntry}
+      addNewFood(newFoodEntry)
+      setNameFoodEntry('');
+      setImageFoodEntry('');
+      setCaloriesFoodEntry(0);
+      setServingsFoodEntry(0);
     }
 
   return (

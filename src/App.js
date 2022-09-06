@@ -7,9 +7,6 @@ import AddFoodForm from './components/AddFoodForm';
 import './App.css';
 import { Divider } from 'antd';
 
-
-
-
 function App() {
   const [foodsList, setFoodsList] = useState(foods);
  
