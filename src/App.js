@@ -3,6 +3,7 @@ import foods from './foods.json';
 
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
+import Search from './components/Search';
 
 import './App.css';
 import { Divider } from 'antd';
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <h1>Iron Nutrition</h1>
+      <Search/>
       <AddFoodForm addNewFood={addNewFood}/>
       <Divider style={{marginTop: '2.5em'}}>Food List</Divider>
       {foodsList.map((food, index) => {
